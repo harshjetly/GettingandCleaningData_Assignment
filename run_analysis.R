@@ -62,15 +62,14 @@ run_analysis <- function(folderName){
       colnames(completeDataSet_tbl)[2] <- "activity"
       
       ## Writing Tidy Data to file
-      write.csv(completeDataSet_tbl, file = paste("./", folderName, "/tidyData.txt", sep=""), row.names = FALSE)
+      write.table(completeDataSet_tbl, file = paste("./", folderName, "/tidyData.txt", sep=""), row.names = FALSE)
       
 
       ## Avg by Subject & Activity 
       avgCompleteDataSet <- group_by(completeDataSet_tbl, subject, activity) %>% summarise_each(funs(Avg="mean"))
       
       ## Writing Averaged Tidy Data to file 
-      write.csv(avgCompleteDataSet, file = paste("./", folderName, "/tidyAvgData.txt", sep = ""), row.names = FALSE)
+      write.table(avgCompleteDataSet, file = paste("./", folderName, "/tidyAvgData.txt", sep = ""), row.names = FALSE)
       
-      View(completeDataSet_tbl)
-      View(avgCompleteDataSet)
+      
 }
